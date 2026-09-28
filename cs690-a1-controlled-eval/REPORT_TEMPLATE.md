@@ -1,4 +1,9 @@
-# CS 690 Assignment 1 Report: Replicating a Controlled Evaluation
+# CS 690 Assignment 1 Report: Replicating a Controlled Evaluation by Gustavo Abreu
+
+# Link to repository 
+```text 
+https://github.com/ga424/cs690_assignment1
+```
 
 ## Part 1. Verification evidence
 

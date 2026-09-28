@@ -8,22 +8,22 @@ C4Deployment
 
     Deployment_Node(workstation, "Student workstation", "macOS, Linux, or Windows", "Runs the Python virtual environment and Docker Desktop or Docker Engine") {
         Deployment_Node(pythonRuntime, "Python runtime", "Python 3.11-3.14", "Runs the harness modules") {
-            Container(runner, "Experiment runner", "harness.runner", "Orchestrates generation, grading, metrics, and reports")
-            Container(verification, "Verification command", "harness.verify", "Checks the frozen dataset and sandbox without an API key")
+            Deployment_Node(runner, "Experiment runner", "harness.runner", "Orchestrates generation, grading, metrics, and reports")
+            Deployment_Node(verification, "Verification command", "harness.verify", "Checks the frozen dataset and sandbox without an API key")
         }
         Deployment_Node(dockerHost, "Docker Engine", "Docker", "Builds and starts the sandbox image") {
             Deployment_Node(sandboxContainer, "Candidate sandbox container", "python:3.11.15-slim-bookworm", "One short-lived container per candidate") {
-                Container(candidateExecutor, "Candidate executor", "harness/docker_entry.py", "Executes candidate source and tests; emits one JSON verdict")
+                Deployment_Node(candidateExecutor, "Candidate executor", "harness/docker_entry.py", "Executes candidate source and tests; emits one JSON verdict")
             }
         }
         Deployment_Node(repository, "Repository files", "Local filesystem", "Configuration, tasks, prompts, candidates, results, and summaries") {
-            ContainerDb(inputs, "Frozen inputs", "conditions.json and tasks/cs690_eval20.json", "Fixed controls and task dataset")
-            ContainerDb(outputs, "Run artifacts", "results/, prompts/, and candidates/", "Manifest, raw rows, summaries, and saved answers")
+            Deployment_Node(inputs, "Frozen inputs", "conditions.json and tasks/cs690_eval20.json", "Fixed controls and task dataset")
+            Deployment_Node(outputs, "Run artifacts", "results/, prompts/, and candidates/", "Manifest, raw rows, summaries, and saved answers")
         }
     }
 
     Deployment_Node(providerCloud, "Model provider cloud", "HTTPS API", "External service selected by conditions.json") {
-        Container(providerApi, "Provider API", "OpenAI or Anthropic", "Generates candidate answers")
+        Deployment_Node(providerApi, "Provider API", "OpenAI or Anthropic", "Generates candidate answers")
     }
 
     Rel(runner, inputs, "Reads")
