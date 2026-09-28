@@ -7,9 +7,6 @@ __pycache__/
 .venv/
 venv/
 
-# Generated evaluation results
-cs690-a1-controlled-eval/results/
-
 # Local environment files
 .env
 .env.*
