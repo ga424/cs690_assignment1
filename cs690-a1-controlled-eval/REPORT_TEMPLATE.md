@@ -20,6 +20,10 @@ OK: model/configuration metadata written to results/verification.json
 
 Paste the final summary line of `pytest -q` here.
 
+(venv) ➜  cs690-a1-controlled-eval git:(main) ✗ pytest -q
+....................                                       [100%]
+20 passed in 1.40s
+
 Answer each question in your own words, in about 75 to 150 words. Base every answer on the code in this repository, and name the files and functions you describe.
 
 ### Q1. The path of one attempt
@@ -44,8 +48,8 @@ Take every number from `results/experiment/summary_A.json` and `results/experime
 
 | Condition | Requested model | Returned model version | Attempts per task | Total attempts | pass@1 | 95 percent CI for pass@1 | pass@2 | Input tokens | Output tokens | Dollars spent |
 | --- | --- | --- | ---: | ---: | ---: | --- | ---: | ---: | ---: | --- |
-| A | | | 3 | 60 | | | | | | |
-| B | | | 3 | 60 | | | | | | |
+| A | gpt-5.6-luna| Not Available | 3 | 60 | 120 | 0.9833333333334 | 0.95 | 1.0 | 7146 | 3838 | 0.03 |
+| B | gpt-5.6-terra| Not Available | 3 | 60 | 120 | 1.0 | 1.0 | 1.0 | 7146 | 4072 | 0.03 |
 
 ### Memo, no more than 500 words, not counting the table
 
